@@ -1,15 +1,17 @@
 # My-Reference
 Reference
 
-https://github.com/cornflourblue/angular-registration-login-example
+github.com/cornflourblue/angular-registration-login-example
 
-https://github.com/nebrius/user-management
+github.com/nebrius/user-management
+
+github.com/rabinsen/angular2user_management
 
 If working with applications and designs of the CPB Digital Programme and working on technical architecture is something you love then the tech lead role will be definitely one to look out for you. It requires working closely with technical stakeholders from various platforms in TSI / UK and vendors to deliver completed and fully tested changes.It also requires you to involve liaison with Business Users, Business Analysts, Design teams and Developers, be responsible for definition and documentation of detailed Non-Functional requirements and to provide significant input to the future design of systems.
 it-ebooks.directory/book-1847194141.html Tech Lead – Object Oriented Java Script (React JS or Angular JS, CSS3, HTML5, SASS, Bootstrap)
 he Role
 
-http://github.com/DanWahlin
+github.com/DanWahlin
  
 
 What the Business Does
