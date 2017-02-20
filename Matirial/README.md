@@ -18,6 +18,20 @@ it-ebooks.directory/book-1847194141.html Tech Lead – Object Oriented Java Scri
 he Role
 
 github.com/DanWahlin
+
+
+
+github.com/c1rabbit/user-management
+github.com/search?l=JavaScript&p=3&q=user-management+&type=Repositories&utf8=%E2%9C%93
+github.com/c1rabbit/user-management
+github.com/c1rabbit/user-management
+
+github.com/DanWahlin
+
+
+github.com/incuna/angular-user-management
+github.com/mrvdot/angular-users
+github.com/rabinsen/angular2user_management
  
 
 What the Business Does
