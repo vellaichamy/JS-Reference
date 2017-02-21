@@ -32,6 +32,11 @@ github.com/DanWahlin
 github.com/incuna/angular-user-management
 github.com/mrvdot/angular-users
 github.com/rabinsen/angular2user_management
+
+
+https://github.com/dreamfactorysoftware/angular2-sdk
+
+https://github.com/saidmaadan/ng2node
  
 
 What the Business Does
