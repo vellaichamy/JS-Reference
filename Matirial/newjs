@@ -1,0 +1,312 @@
+Web Domain
+
+How to add multiple ? In URL
+How continuosuly update data from server to json
+How to improve the performance when huge data getting from server each time to update a value
+Some cross browser handling technique
+JavaScript
+
+Form validation using JavaScript
+difference between == and ===
+What is hoisting?
+Types of object creation 1) new keyword 2) Function constructor 3) Object literal notation ({}) 4) Object.create()
+hasOwnProperty
+Difference between pass by value and pass by reference
+Event handling
+What is closure and it's use cases with example? A closure is an inner function that has access to the outer (enclosing) function’s variables—scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables. Uses??
+Prototype
+What is NaN
+Scope chaining
+Prototype chaining
+local storage and session storage
+Explain Inheritance?
+What is prototype?
+What is difference between Synchronous and Asynchronous?
+
+Real word scenario for closures
+
+JavaScript string methods
+Java script classes
+Constructor and prototype
+Inheriting one class from other class
+How to override function
+Implementing singleton classes
+Namespace
+Slice, Splice, split
+On, bind, live, delegate events
+Patterns, iframe, cookies
+Memory leak
+Difference between function and methods in JavaScript
+A method is just a function which is a property of an object. (Constructor Function or Class)
+A Method function has access to the data present in its Construction function
+What are listeners
+Primitive wrapper
+Promises in JavaScript
+Overloading in JavaScript
+for, for in, forEach, for of
+What all collections available in JavaScript
+typeof and instanceof operator
+Regular expression for email validation
+Singleton design pattern
+Any other design pattern
+Modifying plugins and writing our own plugins
+How to read form elements value and how to set value to them using JavaScript
+        1.  function test() {   
+            }
+            test.prototype.name = "John Doe";
+            var test1 = new test();
+            test1.prototype.name = "Jane Doe";      // We can't access the prototype directly from an instance object.
+                                                    // We can use __proto__ which is not recommended
+            var test2 = new test();
+            console.log(test2.name);                // "Jane Doe" - All the instance objects will have access to the same prototype object
+
+        2.  function test() {
+                y = 20;
+                var x = 10;
+            }
+            test();
+            console.log(y);                         // 20 - 'y' will be attached to global scope
+
+        3.  var myobj = {
+                foo : "bar";
+                myfunc: fucntion(){
+                    var self = this;
+                    console.log("1st --" + this.foo);
+                    console.log("2nd --" + self.foo);
+                    (function(){
+                        console.log("3rd --" + this.foo);
+                        console.log("4th --" + self.foo);
+                    })();
+                }
+            }
+
+            myobj.myfunc;                           // Just prints the function
+            myobj.myfunc();                         // 1st -- bar
+                                                    // 2nd -- bar
+                                                    // 3rd -- undefined
+                                                    // 4th -- bar
+
+        4.  var a = new Object();
+            var b = new Object();
+            var c = new Object();
+                                                    // An object's key must be type of string
+            c[a] = "bar";                           // So, whenever a primitive is used as a key, it will be converted to string and then used as a key
+                                                    // For example,\
+                                                        PRIMITIVE       KEY \
+                                                        1.5         -> "1.5" \
+                                                        true        -> "true" \
+                                                        undefined   -> "undefined" \
+                                                        null        -> "null"
+                                                    // And whenever an object is used as a key, the return value of toString() method of that object is used as key
+                                                    // For example \
+                                                        TYPE                    CODE                        KEY \
+                                                        {}                  -> new Object().toString()  -> "[object Object]" \
+                                                        [10]                -> Array.of(10).toString()  -> "10" \
+                                                        function            -> function(){}             -> "function(){} \
+                                                        Custom toString()   -> toString = function(){return "custom object"};   -> "custom object"
+
+            console.log(c[a]);                      // "bar"
+
+        5.  var def;
+            function abc() {
+                var a = 10;
+                def = function () {
+                    console.log(a);
+                }
+            }
+            function pqr() {
+                def();
+            }
+            abc();
+            pqr();
+HTML5
+
+HTML4 and HTML5 difference
+Semantics in HTML5
+Box model
+Center two div elements in a page
+How box model width will be calculated in ie and chrome IE calculates the element width including border and paddng along with the content (box-sizing: border-box) (Workaround: using conditional comment and/or CSS filters) Chrome calculates the element width excluding border and padding and only content(box-sizing: content-box)
+Difference between Padding and Margin
+Form Elements
+Form Validation
+Local Storage and session storage
+New HTML Form elements
+header and footer
+Navigator object (BOM)
+Refresh document every 30 seconds:
+HTML 5 new tags and css3 properties
+InnerText, InnerHtml, textContent and value
+Flow how HTML page executes
+Get link from anchor tag and play in to html5 video tag
+Explain Doctype. What are the various types of doctypes
+How to create a diamond shaped div
+CSS3
+
+Box model
+Positiong Elements
+What is difference between inline and inline block and div (block)
+CSS border
+Responsive layout using CSS3
+How to design responsive layout without using css3 media query
+Layout design for mobile TAB
+Media queries
+Style preference CSS
+Sprite
+Use of !important, clear in CSS
+Z-index
+Pseudo selectors in CSS
+Why > used in CSS
+What are the breakpoints for a responsive design
+AngularJS
+
+What is promise
+How MVC works in angular
+Custom directive
+Type of custom directives
+What is link fucntion in directive.
+Directive execution priority
+Directives require,transclude
+Two way data binding
+How two way data binding works
+What is scope
+Difference between $digest and $apply
+What is Transclude
+Isolated scope
+How to make ajax call in angularjs?
+What are the callback functions for $http?
+What is dependency injection?
+Who will do dependency injection
+How you will inject in application level?
+Access custom directive from multiple places
+Services and how to exchange data between service and controller
+Filters in Angular
+Custom filter
+What custom filter wil return
+providers, services and factory
+What providers will return
+defered
+$brodcast, $on, $emit
+$digest, $apply and $watch
+Difference between constant and value
+compile and link and prelink
+compile and link functions
+ng-repat attaching events will work in compile/link, when DOM manipulation will happen
+Write a controller with out attaching to global scope
+Difference between routing and ui.router
+Difference between $timeout and document.setTimeOut
+$q service and $http service
+ngvalid, ngif
+How to choose angularjs for project
+How continuosuly update data from server to json
+JQuery
+
+Difference between # & .?
+what is JQuery ready function use?
+Difference between find() and children()?
+Call back function of $ajax?
+How you will set text to the div if div is
+?
+How to read form elements value and how to set value to them using JavaScript and jquery
+Noconflict in jquery
+Stop animation
+each
+prop vs attr
+Pseudo selectors in JQuery
+Jquery selectors
+DOMContentLoaded vs $('document').ready() vs load events
+Assume a table has so many cells and many cells has values as "male" and "female". How to find the number of table cells in table which contains the value "male"
+Why do we write code in $('document').ready()
+Ajax
+
+Restriction for Ajax calls
+Other Frameworks
+
+960 degree
+Bootstrap
+Sizzle (CSS selector framework inside JQuery)
+Other tools
+
+gulp
+grunt
+
+============
+Questions
+
+What is the spec Javascript implements and what versions of it are you most current with?
+
+Does JavaScript support the use of classes?
+
+What is the prototype of an object?
+
+What is prototypal inheritance?
+
+What is the DOM?
+
+What are the two types of event propagation?
+
+What is the difference between event bubbling and event capturing for DOM events?
+
+What is the “this” keyword and what does it reference?
+
+How does scope in Javascript differ from other languages?
+
+What is hoisting?
+
+What is a closure?
+
+What is the module pattern and what problem does it attempt to solve?
+
+What is dependecy injection?
+
+Do you have any experience with RequireJS or CommonJS?
+
+What front end frameworks have you worked with before?
+
+Have you ever worked with AngularJS?
+
+What are directives and how are they used?
+
+What are services and what purpose do they serve?
+
+What's your favorite thing about JS?
+
+What is your least favorite thing about JS?
+
+Generally speaking, what is the slowest operation you can perform on the front-end with JS?
+
+What does the 'use strict' declaration do?
+
+What different in the arguments variable in a function when 'use strict' is declared?
+
+What kinds of techniques can you use to call a web service from another domain?
+
+What is a CORS request?
+
+What browsers support CORS requests?
+
+How do you do a CORS request in IE9 and what caveats must you work around?
+
+What does the defer attribute do when loading a script tag?
+
+What is Cross-Site Scripting?
+
+What is the Same Origin Policy?
+
+What is Cross-Site Request Forgery?
+
+What are some of the new JavaScript features in HTML5?
+
+What is a WebSocket?
+
+What is test driven development?
+
+What's the difference between a unit test and an integration test?
+
+What is NodeJs?
+
+What engine powers NodeJs?
+
+Tests
+
+Write a function that will iterate over an array of emails and will call sendEmail({email}) with each item.
+Write a function that will return the manager of a user from a nested heirarchy.
