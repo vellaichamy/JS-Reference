@@ -17,3 +17,89 @@ var SingletonClass = (function() {
 
 // Usage
 var obj = SingletonClass.getInstance();
+
+
+
+
+// Create a base class to sub-class.
+function Base(){
+	this.SimpleProperty = "Simple";
+	this.ComplexProperty = {};
+}
+
+// Create sub-class and extend base class.
+SubClass.prototype = new Base();
+SubClass.constructor = SubClass;
+
+function SubClass( strProperty ){
+	// Call super constructor.
+	Base.call( this );
+	this.SubClassProperty = strProperty;
+}
+
+/* ------------------------------------- */
+
+// Create two instances of sub-class.
+objA = new SubClass( "ObjA" );
+objB = new SubClass( "ObjB" );
+
+// Update the simple property in the base class.
+objA.SimpleProperty = "SimpleA";
+objB.SimpleProperty = "SimpleB";
+
+// Update key in complex property in the base class.
+objA.ComplexProperty.AKey = "FromA";
+objB.ComplexProperty.BKey = "FromB";
+
+// Log updated property profiles.
+// Log updated property profiles.
+console.log( objA.ComplexProperty.AKey );	// FromA
+console.log( objA.ComplexProperty.BKey );	// undefined
+console.log( objB.ComplexProperty.AKey );	// undefined
+console.log( objB.ComplexProperty.BKey );	// FromB
+
+
+
+=====================
+
+// Create a base class to sub-class.
+function Base(){
+	this.SimpleProperty = "Simple";
+	this.ComplexProperty = {};
+}
+
+// Create sub-class and extend base class.
+SubClass.prototype = new Base();
+SubClass.constructor = SubClass;
+
+function SubClass( strProperty ) {
+	this.SubClassProperty = strProperty;
+}
+
+/* ------------------------------------- */
+
+// Create two instances of sub-class.
+objA = new SubClass( "ObjA" );
+objB = new SubClass( "ObjB" );
+
+// Update the simple property in the base class.
+objA.SimpleProperty = "SimpleA";
+objB.SimpleProperty = "SimpleB";
+
+// Update key in complex property in the base class.
+objA.ComplexProperty.AKey = "FromA";
+objB.ComplexProperty.BKey = "FromB";
+
+// Log updated property profiles.
+console.log( objA.ComplexProperty.AKey );	// FromA
+console.log( objA.ComplexProperty.BKey );	// FromB
+console.log( objB.ComplexProperty.AKey );	// FromA
+console.log( objB.ComplexProperty.BKey );	// FromB
+
+
+========================
+
+
+
+
+
