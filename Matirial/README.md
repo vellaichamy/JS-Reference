@@ -119,6 +119,10 @@ https://jsonplaceholder.typicode.com/posts
 http://172.17.56.114/api
 https://github.com/search?l=TypeScript&q=angular2-basics&type=Repositories&utf8=%E2%9C%93
 
+https://gist.github.com/raajkumar-s/3f714f4fc987da3b0ecf17ca9044e2d1
+
+https://gist.github.com/SinisterMinister/5888779
+
 
  
 
