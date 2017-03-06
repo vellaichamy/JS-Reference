@@ -1,0 +1,19 @@
+var SingletonClass = (function() {
+    var instance;
+    function SingletonClass() {
+        //do stuff
+    }
+    return {
+        getInstance: function(){
+            if (instance == null) {
+                instance = new SingletonClass();
+                // Hide the constructor so the returned objected can't be new'd...
+                instance.constructor = null;
+            }
+            return instance;
+        }
+   };
+})();
+
+// Usage
+var obj = SingletonClass.getInstance();
