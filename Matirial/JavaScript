@@ -1,0 +1,84 @@
+Javascript Interview Questions
+
+General interview questions for a front-end JS developer.
+
+Questions
+
+What is the spec Javascript implements and what versions of it are you most current with?
+
+Does JavaScript support the use of classes?
+
+What is the prototype of an object?
+
+What is prototypal inheritance?
+
+What is the DOM?
+
+What are the two types of event propagation?
+
+What is the difference between event bubbling and event capturing for DOM events?
+
+What is the “this” keyword and what does it reference?
+
+How does scope in Javascript differ from other languages?
+
+What is hoisting?
+
+What is a closure?
+
+What is the module pattern and what problem does it attempt to solve?
+
+What is dependecy injection?
+
+Do you have any experience with RequireJS or CommonJS?
+
+What front end frameworks have you worked with before?
+
+Have you ever worked with AngularJS?
+
+What are directives and how are they used?
+
+What are services and what purpose do they serve?
+
+What's your favorite thing about JS?
+
+What is your least favorite thing about JS?
+
+Generally speaking, what is the slowest operation you can perform on the front-end with JS?
+
+What does the 'use strict' declaration do?
+
+What different in the arguments variable in a function when 'use strict' is declared?
+
+What kinds of techniques can you use to call a web service from another domain?
+
+What is a CORS request?
+
+What browsers support CORS requests?
+
+How do you do a CORS request in IE9 and what caveats must you work around?
+
+What does the defer attribute do when loading a script tag?
+
+What is Cross-Site Scripting?
+
+What is the Same Origin Policy?
+
+What is Cross-Site Request Forgery?
+
+What are some of the new JavaScript features in HTML5?
+
+What is a WebSocket?
+
+What is test driven development?
+
+What's the difference between a unit test and an integration test?
+
+What is NodeJs?
+
+What engine powers NodeJs?
+
+Tests
+
+Write a function that will iterate over an array of emails and will call sendEmail({email}) with each item.
+Write a function that will return the manager of a user from a nested heirarchy.
