@@ -92,37 +92,41 @@ At Bangalore, our purpose is to serve customers well. We serve around 24 million
 With colleagues across 5 main states, and connected across-the-globe by common values and a unified ambition, Bangalore India delivers vital bank functions that help us offer truly round-the-clock support to our UK customers, and 24/7 banking to our international customers.
 
 
+//github.com/c1rabbit/user-management
+//github.com/search?l=JavaScript&p=3&q=user-management+&type=Repositories&utf8=%E2%9C%93
+//github.com/c1rabbit/user-management
+//github.com/c1rabbit/user-management
+
+//github.com/DanWahlin
 
 
-https://github.com/c1rabbit/user-management
-https://github.com/search?l=JavaScript&p=3&q=user-management+&type=Repositories&utf8=%E2%9C%93
-https://github.com/c1rabbit/user-management
-https://github.com/c1rabbit/user-management
+//github.com/incuna/angular-user-management
+//github.com/mrvdot/angular-users
 
-http://github.com/DanWahlin
+//github.com/rabinsen/angular2user_management
 
+//github.com/abhinavmsra/angular2
 
-https://github.com/incuna/angular-user-management
-https://github.com/mrvdot/angular-users
+//github.com/chsakell/angular2-features
 
-https://github.com/rabinsen/angular2user_management
-
-https://github.com/abhinavmsra/angular2
-
-https://github.com/chsakell/angular2-features
-
-https://github.com/loiane/angular2-crud-rest/tree/master/src/app
+//github.com/loiane/angular2-crud-rest/tree/master/src/app
 
 
-https://jsonplaceholder.typicode.com/posts
+//jsonplaceholder.typicode.com/posts
 
-http://172.17.56.114/api
-https://github.com/search?l=TypeScript&q=angular2-basics&type=Repositories&utf8=%E2%9C%93
+//172.17.56.114/api
+//github.com/search?l=TypeScript&q=angular2-basics&type=Repositories&utf8=%E2%9C%93
 
-https://gist.github.com/raajkumar-s/3f714f4fc987da3b0ecf17ca9044e2d1
+//gist.github.com/raajkumar-s/3f714f4fc987da3b0ecf17ca9044e2d1
 
-https://gist.github.com/SinisterMinister/5888779
+//gist.github.com/SinisterMinister/5888779
 
 
- 
+ //auto
+mrantonwinter.github.io/json-to-master-detail-angular-bootstrap/
 
+//gist.github.com/SinisterMinister
+
+
+sidebar
+//github.com/honeinc/sidebar
