@@ -130,3 +130,4 @@ mrantonwinter.github.io/json-to-master-detail-angular-bootstrap/
 
 sidebar
 //github.com/honeinc/sidebar
+github.com/dbtek/angular-hamburger-toggle
