@@ -4,3 +4,15 @@ cmacdonnacha/angular-material-boilerplate
 InfomediaLtd
 kalpeshsatasiya/MasterPagesInAngular2
 hasanhameed07/angular2-dashboard-starter
+
+
+<md-progress-spinner style="margin:0 auto;" mode="determinate" [value]="88"></md-progress-spinner>
+  <md-progress-spinner mode="indeterminate"></md-progress-spinner>
+  
+  <!-- Optional Version Output -->
+  <hr>
+  <p *ngIf="version | async" style="color: #333">
+      Using Angular Material 
+    (SHA {{ (version | async)?.commit.message.split(" ")[0] }}) from 
+    {{ (version | async)?.commit.author.date | date: 'short' }}
+  </p>
