@@ -1,45 +1,45 @@
 # My-Reference
 Reference
 
-github.com/cornflourblue/angular-registration-login-example
+--cornflourblue/angular-registration-login-example
 
-github.com/nebrius/user-management
+--nebrius/user-management
 
-github.com/rabinsen/angular2user_management
+--rabinsen/angular2user_management
 
-github.com/codeperl/angular2-crud-boilerplate
+--codeperl/angular2-crud-boilerplate
 
-github.com/search?utf8=%E2%9C%93&q=angular2+crud&type=Repositories&ref=searchresults
+--search?utf8=%E2%9C%93&q=angular2+crud&type=Repositories&ref=searchresults
 
-github.com/camargo/Angular2CRUD
+--camargo/Angular2CRUD
 
 If working with applications and designs of the CPB Digital Programme and working on technical architecture is something you love then the tech lead role will be definitely one to look out for you. It requires working closely with technical stakeholders from various platforms in TSI / UK and vendors to deliver completed and fully tested changes.It also requires you to involve liaison with Business Users, Business Analysts, Design teams and Developers, be responsible for definition and documentation of detailed Non-Functional requirements and to provide significant input to the future design of systems.
 it-ebooks.directory/book-1847194141.html Tech Lead – Object Oriented Java Script (React JS or Angular JS, CSS3, HTML5, SASS, Bootstrap)
 he Role
 
-github.com/DanWahlin
+--DanWahlin
 
 
 
-github.com/c1rabbit/user-management
-github.com/search?l=JavaScript&p=3&q=user-management+&type=Repositories&utf8=%E2%9C%93
-github.com/c1rabbit/user-management
-github.com/c1rabbit/user-management
+--c1rabbit/user-management
+--search?l=JavaScript&p=3&q=user-management+&type=Repositories&utf8=%E2%9C%93
+--c1rabbit/user-management
+--c1rabbit/user-management
 
-github.com/DanWahlin
-
-
-github.com/incuna/angular-user-management
-github.com/mrvdot/angular-users
-github.com/rabinsen/angular2user_management
-
-https://github.com/dreamfactorysoftware/angular2-sdk
-https://github.com/saidmaadan/ng2node
+--DanWahlin
 
 
-https://github.com/dreamfactorysoftware/angular2-sdk
+--incuna/angular-user-management
+--mrvdot/angular-users
+--rabinsen/angular2user_management
 
-https://github.com/saidmaadan/ng2node
+https:--dreamfactorysoftware/angular2-sdk
+https:--saidmaadan/ng2node
+
+
+https:--dreamfactorysoftware/angular2-sdk
+
+https:--saidmaadan/ng2node
  
 
 What the Business Does
@@ -92,42 +92,42 @@ At Bangalore, our purpose is to serve customers well. We serve around 24 million
 With colleagues across 5 main states, and connected across-the-globe by common values and a unified ambition, Bangalore India delivers vital bank functions that help us offer truly round-the-clock support to our UK customers, and 24/7 banking to our international customers.
 
 
-//github.com/c1rabbit/user-management
-//github.com/search?l=JavaScript&p=3&q=user-management+&type=Repositories&utf8=%E2%9C%93
-//github.com/c1rabbit/user-management
-//github.com/c1rabbit/user-management
+--c1rabbit/user-management
+--search?l=JavaScript&p=3&q=user-management+&type=Repositories&utf8=%E2%9C%93
+--c1rabbit/user-management
+--c1rabbit/user-management
 
-//github.com/DanWahlin
+--DanWahlin
 
 
-//github.com/incuna/angular-user-management
-//github.com/mrvdot/angular-users
+--incuna/angular-user-management
+--mrvdot/angular-users
 
-//github.com/rabinsen/angular2user_management
+--rabinsen/angular2user_management
 
-//github.com/abhinavmsra/angular2
+--abhinavmsra/angular2
 
-//github.com/chsakell/angular2-features
+--chsakell/angular2-features
 
-//github.com/loiane/angular2-crud-rest/tree/master/src/app
+--loiane/angular2-crud-rest/tree/master/src/app
 
 
 //jsonplaceholder.typicode.com/posts
 
 //172.17.56.114/api
-//github.com/search?l=TypeScript&q=angular2-basics&type=Repositories&utf8=%E2%9C%93
+--search?l=TypeScript&q=angular2-basics&type=Repositories&utf8=%E2%9C%93
 
-//gist.github.com/raajkumar-s/3f714f4fc987da3b0ecf17ca9044e2d1
+//gist.--raajkumar-s/3f714f4fc987da3b0ecf17ca9044e2d1
 
-//gist.github.com/SinisterMinister/5888779
+//gist.--SinisterMinister/5888779
 
 
  //auto
 mrantonwinter.github.io/json-to-master-detail-angular-bootstrap/
 
-//gist.github.com/SinisterMinister
+//gist.--SinisterMinister
 
 
 sidebar
-//github.com/honeinc/sidebar
-github.com/dbtek/angular-hamburger-toggle
+--honeinc/sidebar
+--dbtek/angular-hamburger-toggle
