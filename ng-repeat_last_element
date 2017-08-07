@@ -1,0 +1,3 @@
+ng-repeat with comma separated but last element
+
+{{{true: '', false: ', '}[$last]}}
