@@ -43,3 +43,5 @@ input[type="checkbox"]:checked:after {
      * left: 0;
      */
 }
+
+http://jsfiddle.net/5g3w32ug/
