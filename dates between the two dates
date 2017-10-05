@@ -20,3 +20,23 @@
       }
       return dates;
     };
+    
+    
+    function getDateOfNextDay(dayOfTheWeek) {
+ var currentDayOfTheWeek = moment().isoWeekday();   
+  if ( currentDayOfTheWeek <= dayOfTheWeek ) {
+    return moment().isoWeekday(dayOfTheWeek).format("MM/DD/YYYY"); // a date in the current week
+  }
+  else {
+    return moment().add(1,'weeks').isoWeekday(dayOfTheWeek).format("MM/DD/YYYY"); // a date in the previous week
+  }
+}
+
+function GetDateDiff(startDate, endDate, startTime, endTime)
+{
+  var startDateTime = new Date(startDate + " " + startTime);
+  var endDateTime = new Date(endDate + " " + endTime);
+  var difference = endDateTime.getTime() - startDateTime.getTime(); // This will give difference in milliseconds
+  var resultInHours = Math.round(difference / 60000)/60;
+  return resultInHours;
+}
