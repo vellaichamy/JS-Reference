@@ -1,0 +1,529 @@
+
+　　Html articles:
+
+　　1. Which page do you do in the browser test? What is the core of these browsers?
+
+ IE: trident kernel 
+ Firefox: gecko kernel 
+ Safari: webkit kernel
+ Opera: It used to be the presto kernel, Opera now switched to Google Chrome's Blink kernel
+ Chrome: Blink (based on webkit, Google and Opera Software co-developed ) 
+　　
+
+　　2. Each HTML file at the beginning there is a very important thing, Doctype, do you know what it is?
+
+　　Answer: <! DOCTYPE> The declaration is at the top of the document, just before the <html> tag. This tab tells the browser what HTML or XHTML specification to use for the document. ( Important: Tell the browser in accordance with what norms parse the page )
+
+ 
+
+　　3.Quirks model is what? What is the difference between Standards and Standards?
+
+　　Answer:
+
+　　Beginning in IE6, Standards mode was introduced. In standard mode, browsers try to get the normative documents properly aligned to the specified browser.
+
+　　CSS was not mature enough before IE6, so IE5 and other browsers had poor CSS support and IE6 would provide better support for CSS. However, the problem came at this time because many pages were based on the old layout Way to write, and if IE6 support CSS will make these pages display abnormal, how to ensure that does not destroy the existing page, but also provide a new rendering mechanism?
+
+　　When writing programs we often encounter such problems, how to ensure that the original interface unchanged, but also provide more powerful features, especially when new features are not compatible with the old features. A common practice when confronted with this problem is to add parameters and branches, that is, when a certain parameter is true, we use the new function, and if this parameter is not true, we use the old function, so that we can not damage The original program, but also provide new features. IE6 does the same thing, it treats the DTD as the "argument," since none of the previous pages write DTDs, so IE6 assumes that writing DTDs means that the page will be better CSS-enabled The layout, and if not, then use the layout before compatibility. This is the Quirks mode (quirks mode, weird mode, weird mode).
+
+　　the difference:
+
+　　The overall layout, style analysis and script implementation of the three differences.
+
+　　Box Model: In the W3C standard, setting the width and height of an element refers to the width and height of the element's content, while in Quirks mode, the width and height of the IE also include padding and border.
+
+      
+
+　　Setting the width of an element in a row: In Standards mode, setting wdith and height for inline elements such as <span> will not take effect, but will take effect in quirks mode.
+
+　　Set the height of the percentage: in the standard mode, the height of an element is determined by its content, if the parent element is not set the height of the percentage, the sub-element set a percentage of the height is invalid with margin: 0 auto set the level Center: use margin: 0 auto In the standard mode can make the elements horizontal center, but in the quirks mode will fail.
+
+　　( There are many more questions to ask about what is unimportant. The key is to see whether these answers he has encountered are not encountered by his own experience, or are all based on the articles, or even completely unknown. )
+
+ 
+
+　　4.div + css layout of the table layout What are the advantages?
+
+Revised version more convenient as long as change css file.
+Page loading faster, structured and clear, simple page display.
+Performance and structure of phase separation.
+Easy SEO (SEO) search engine more friendly, ranked more easily in the forefront.
+ 
+
+　　5.a: img alt and title What are the similarities and differences? b: strong and em similarities and differences?
+
+　　Answer:
+
+　　a:
+
+alt (alt text): is a user agent (UA) that can not display images, forms, or applets. The alt attribute is used to specify replacement text. The language of the replacement text is specified by the lang attribute. (In IE browser, there is no title alt as a tool tip display)
+title (tool tip): This attribute provides advisory information for the element that sets this attribute.
+　　b:
+
+strong: Bold emphasis on the label, emphasizing the importance of the content
+em: italics emphasis on labels, more emphasis, indicating the emphasis of the content
+　　
+
+　　6. Can you describe the difference between incremental and elegant downgrade ?
+
+Progressive Enhancement: Enhances the basic user experience by building pages for lower browsers to ensure the most basic functions, and then improving and adding functions and enhancements to advanced browsers.
+Graceful degradation graceful degradation: from the beginning to build a complete feature, and then for older browsers compatible.
+　　The Difference: Graceful downgrades start with a complex situation and try to reduce the supply of user experience, while incremental enhancements start with a very basic, functional version and grow to fit the needs of the environment in the future. Downgrading (functional decay) means looking backwards; while increasing astrophy means looking ahead while ensuring that its roots are in a safe place.　
+
+　　"Elegant downgrade" point of view
+
+　　"Elegant downgrade" point of view that the site should be designed for those most advanced, most complete browser. Instead, those tests that were considered "out of date" or missing in functionality were scheduled for the final stages of the development cycle and limited the test to the previous version of the major browsers (IE, Mozilla, etc.).
+
+　　In this design paradigm, older browsers were thought to provide only a "poor but but passable" browsing experience. You can make some small adjustments to a particular browser. However, since they are not the focus of our attention, any differences other than repairing larger errors will be directly ignored.
+
+　　"Gradual increase" point of view
+
+　　The concept of "progressive enhancement" is that the content should be focused on.
+
+　　Content is an incentive for us to build a website. Some websites show it, others collect it, others seek it, others do it, and some websites even include the above, but the same thing is that they all involve content. This makes "incremental enhancement" a more rational design paradigm. This is why it was immediately adopted by Yahoo! and used to build its "Graded Browser Support" strategy.
+
+　　Then the problem is coming. Now the product manager sees IE6, 7, 8 pages relatively high-performance. Modern browsers have a lot less fillet, shading (CSS3), compatibility requirements (using image backgrounds, and abandoning CSS3). How would you convince him?
+
+　　(Free play)
+
+　　
+
+　　7. Why use multiple domain names to store website resources will be more effective?
+
+CDN cache more convenient 
+Break through browser concurrency restrictions 
+Save cookie bandwidth 
+Save the connection number of the main domain name, optimize page response speed 
+Prevent unnecessary security issues
+ 
+
+　　8. Please talk about your understanding of the importance of web standards and standards setting bodies.
+
+　　( No standard answers ) Web standards and standards bodies are all designed to make web development more 'healthy', developers follow a uniform standard, reduce development difficulty and development costs, and SEO will do better and will not be overused Code lead to a variety of BUG, ​​security issues, and ultimately improve website ease of use.
+
+ 
+
+　　9. Please describe the difference between cookies, sessionStorage and localStorage?　　
+
+　　sessionStorage is used to locally store data in a session that can be accessed only by pages in the same session and subsequently destroyed when the session is over. So sessionStorage is not a persistent local storage, just session-level storage. LocalStorage for persistent local storage, unless the initiative to delete data, or data will never expire.
+
+　　The difference between web storage and cookie
+
+Web Storage concept and cookie similar, the difference is that it is designed for larger storage capacity. Cookie size is limited, and every time you request a new page Cookie will be sent in the past, so virtually waste the bandwidth, the other cookie also need to specify the scope, not cross-domain call.
+In addition, Web Storage has setItem, getItem, removeItem, clear and other methods, unlike cookies require front-end developers to package setCookie, getCookie. But cookies are also essential: The role of cookies is to interact with the server as part of the HTTP specification, and Web Storage is simply meant to "store" data locally.
+ 
+
+　　10. Briefly talk about the difference between src and href.
+
+　　Answer:
+
+　　src is used to replace the current element, href is used to establish a link between the current document and the referenced resource.
+
+　　src is the acronym for source, pointing to the location of the external resource, the content pointed to will be embedded in the document where the current label is located; when requesting src resources, the resource it points to is downloaded and applied to the document, eg js script, img image And frame and other elements.
+
+　　<script src = "js.js"> </ script>
+
+　　When the browser parses this element, it will halt the downloading and processing of other resources until the resource is loaded, compiled, executed, and the elements such as images and frames are similar to embedding the pointed resource into the current tab. This is why the js script on the bottom instead of the head.
+
+ 
+
+　　href is an acronym for the Hypertext Reference that points to the location of the network resource, establishes a link to the current element (anchor) or the current document (link) if we add
+
+　　<link href = "common.css" rel = "stylesheet" />
+
+　　Then the browser will identify the document as a css file, it will download resources in parallel and will not stop the current document processing. This is why it is recommended to use the link method to load css instead of the @import method.
+
+ 
+
+　　11. know that the web page will be used to create the picture format?
+
+　　Answer:
+
+　　png-8, png-24, jpeg, gif, svg.
+
+　　But none of the above is the final answer the interviewer wants. The interviewer wants to hear is Webp, Apng . (Whether there is new technology, new things)
+
+　　Popular science Webp : WebP format, Google (google) developed a speed-up picture to speed up the picture format. Picture compression volume is only about 2/3 JPEG, and can save a lot of server bandwidth resources and data space. Well-known sites such as Facebook Ebay have begun testing and using the WebP format.
+
+　　In the case of the same quality, the size of the WebP format image is 40% smaller than the JPEG format image.
+
+　　Apng : full name is "Animated Portable Network Graphics" , PNG is a bitmap animation extension, you can achieve png format dynamic picture effect. 04 was born, but has not been supported by major browser vendors, until recently received iOS safari 8's support, is expected to replace the GIF as the next generation of motion graphics standards.
+
+ 
+
+　　12. know what is microformats? Talk about understanding. Microformats should be considered in front-end build?
+
+　　Answer:
+
+　　Microformats is a collection of machine-readable semantic XHTML vocabularies that are open standards for structured data. Is a special format for special applications.
+
+　　Advantages: Add smart data to the web page, so that the contents of the website in the search engine results interface can display additional tips. (Application example: watercress, interested in their own google )
+
+　　
+
+　　13 css / js code on the line after the developers often optimize performance, starting from the user refresh the web page, a js request under normal circumstances where there will be caching?
+
+　　Answer: dns cache, cdn cache, browser cache, server cache.
+
+ 
+
+　　14. A large number of pictures on a page (large e-commerce site), loading is slow, what are your ways to optimize the loading of these pictures, to the user a better experience.
+
+Picture lazy loading, in the non-visible area on the page can add a scroll bar event, determine the location of the picture and the distance between the browser and the top of the page distance, if the former is smaller than the latter, priority to load.
+If it is a slideshow, album, etc., you can use the image preloading technology, the current display of the picture before the next and a priority download.
+If the picture is css pictures, you can use CSSsprite, SVGsprite, Iconfont, Base64 and other technologies.
+If the picture is too large, you can use a special encoding of the picture, loading will load a particularly powerful compressed thumbnail to enhance the user experience.
+If the size of the image display area is smaller than the actual size of the image, the size of the image will be the same as the size of the image after the image is compressed according to the business needs on the server side. 
+　　
+
+　　15. How do you understand the semantics of the HTML structure?　　
+
+When the page is removed or the style is lost it gives the page a clear structure:
+html itself is not displayed, we see, for example, <h1> is bold, the font size 2em, bold; <strong> is bold, do not think this is the performance of html, these are actually html default css style Role, so remove or style is lost when the page can render a clear structure is not the advantage of semantic HTML structure, but the browser has a default style, the default style is also designed to better express the meaning of html, it can be said The default browser style and semantic HTML structure are indivisible.
+
+Screen readers (if visitors are visually impaired) will "read" your page entirely based on your markup.
+　　For example, if you're using semantic tags, the screen reader will "spell" your word one by one instead of trying to pronounce it completely.
+
+Devices like PDAs, cell phones, etc. may not render webpages just like a normal PC browser (usually because they have weaker CSS support)
+　　Using semantic tags ensures that these devices render the web page in a meaningful way, and ideally, the task of viewing the device is to render the web page to the conditions of the device itself.
+
+　　Semantic tags provide the device with the relevant information it needs, eliminating the need to think through all possible displays (including existing or future new devices). For example, a cell phone may choose to have a section labeled The text appears in bold, while the handheld may appear in larger fonts.Either way Once you mark the text as a title, you can be confident that the reading device will properly display the page according to its own conditions.
+
+Search engine crawlers also rely on tags to determine the context and weight of individual keywords
+　　In the past, you may not have considered the search engine crawler is also the site's "visitors", but now they are actually very valuable users. Without them, the search engine will not be able to index your site, then the average user will be very difficult to visit .
+
+It is important that your page is easy to understand for reptiles because the reptiles largely ignore the tags used for presentation and only focus on semantic tags.
+　　So, if the title of the page file is marked instead of, then the page may be in the middle of the search results, in addition to improving ease-of-use, semantic markup facilitates the proper use of CSS and JavaScript because it provides many "Hook" to apply the style and behavior of the page 
+SEO is mainly based on the content of your website and external links.
+
+Easy to team development and maintenance
+　　The W3C sets a good standard for us and everyone in the team follows this standard, reducing many of the differences, facilitating development and maintenance, improving development productivity, and even enabling modular development .
+
+ 
+
+　　16. talk about the front-end perspective do SEO need to consider what?
+
+Learn how search engines crawl pages and how to index pages
+　　You need to know the basics of how search engines work, the differences between search engines, how search robots (SE robots or web crawlers) work, how search engines sort search results, and more.
+
+Meta tag optimization
+　　Mainly includes the title (Title), website description (Description), and keywords (Keywords). There are other hidden words such as Author, Category, Language, etc.
+
+How to choose keywords and put keywords in the webpage
+　　Search must use the keyword. Keyword analysis and selection is one of the most important aspects of SEO. First of all, to the site to determine the main keywords (usually 5 up and down), and then optimized for these keywords, including the keyword density (Density), Relavancy, prominence (Prominency) and so on.
+
+Understand the major search engines
+　　Although there are many search engines, but the site traffic play a decisive role on the so few. Such as English mainly Google, Yahoo, Bing, etc .; Chinese Baidu, Sogou, youdao and so on. Different search engines crawling pages and indexing, sorting rules are different. Also understand the relationship between the search portal and search engines, such as AOL web search using Google's search technology, MSN is using Bing's technology.
+
+The main internet directory
+　　Open Directory itself is not a search engine, but a large catalog of websites. The main difference between him and a search engine is the way web content is collected. Catalog is manually edited, mainly included in the home page; search engine is automatically collected, in addition to home page also crawl a large number of content.
+
+Click-pay search engine
+　　Search engines also need to survive, with the Internet more mature business, paid search engines are beginning to become popular. The most typical of Overture and Baidu, of course, including Google's advertising project Google Adwords. More and more people are using search engine click ads to locate commercial websites, which also have a lot of optimization and ranking knowledge, you have to learn to get the most clicks with the least advertising investment.
+
+Search engine login
+　　After the site is done, do not lie there waiting for guests to descend from heaven. The easiest way to get someone to find you is to submit the site to a search engine. If you're a commercial website, the major search engines and directories will ask you to pay for the listings (like Yahoo's $ 299), but the good news is that (at least so far) Google, the largest search engine, is still free and that it dominates More than 60% of the search market.
+
+Link Popularity and Link Popularity
+　　Web content is hyperlinked to each other in Hypertext, as well as between websites. In addition to search engines, people Surfing (Surfing) daily through links between different websites. Other sites to your site more links, you will get more traffic. More importantly, the more external links your site has, the more it is perceived by search engines as more important, giving you a higher ranking.
+
+Use a reasonable label 
+　
+
+ 
+
+　　Css articles:
+
+　　Is there any way to set its CSS style on a DOM?　　
+
+External style sheet, the introduction of an external css file
+Inside the style sheet, place the css code inside the <head> tag
+Inline style, the css style directly defined within the HTML element
+　　
+
+　　2.CSS have what selector?
+
+Derivative selector (declared with HTML tags)
+id selector (with DOM's ID declaration)
+Class selector (declared with a style class name)
+Attribute Selector (DOM attribute declaration, belonging to CSS2, IE6 does not support, not commonly used, I do not even know)
+　　In addition to the first three basic selectors, there are some extended selectors, including
+
+Descendants selectors (using space separators, such as div .a {})
+Group Selector (using comma intervals, such as p, div, # a {})　
+　　So the question is, CSS selector is how to define the priority?
+
+　　The basic principle:
+
+　　In general, the more specific the selector, the higher its priority. That is, the more accurate the selector points, the higher its priority.
+
+　　Complicated calculation method:
+
+Use 1 for the derivative selector's priority
+Use 10 to indicate the class selector's priority
+The ID selector's priority is indicated by 100
+div.test1 .span var Priority 1 + 10 +10 +1  
+span # xxx .songs li Priority 1 + 100 + 10 + 1  
+#xxx li Priority 100 +1 
+　　So the question is, look at the following code, what is the color of the text within the <p> tag? .
+
+Copy the code
+. 1  < style > 
+2  .classA { Color : Blue ; } 
+. 3  
+. 4  .classB { Color : Red ; } 
+. 5  </ style > 
+. 6  
+. 7  < body > 
+. 8  
+. 9  < P class = 'classB class classA with' > 123 </ P > 
+10  
+11  </ body >
+Copy the code
+　　Answer: red. Is related to the order in which the styles are defined in the file , that is, before the following overrides, regardless of the precedence in <class class 'classB classA'>. 
+
+　　
+
+　　3. the CSS which can be defined by the attributes, such that a DOM element is not displayed in the browser visible range?　　
+
+　　the basic:
+
+　　Set the display property to none, or set the visibility property to hidden
+
+　　Skills:
+
+　　Set the width and height to 0, set the transparency to 0, and set the z-index position to -1000
+
+ 
+
+　　4. Hyperlinks hover style visit after the visit does not appear what is the problem? How to solve?
+
+　　Answer: The hyperlink style clicked on is not with hover and active. The solution is to change the order of CSS attributes: LVHA (link, visited, hover, active)
+
+ 
+
+　　5. What is Css Hack? ie6,7,8 hack what is?
+
+　　Answer: The process of writing different CSS codes for different browsers is CSS hack.
+
+　　Here's an example:
+
+Copy the code
+1  #test        {   
+ 2          width : 300px ;   
+ 3          height : 300px ;   
+ 4            
+5          background-color : blue ;       / * firefox * / 
+6          background-color : red \ 9 ;       / * all ie * / 
+7          background-color : yellow \ 0 ;     / * ie8 * / 
+8          + background-color : pink ;         / * ie7* / 
+. 9          _background-Color : Orange ;        / * IE6 * /     }  
+ 10          : the root #test { background-Color : Purple \. 9 ;}   / * IE9 * / 
+. 11      @media All and (min-width: 0px) { #test Color-background { : Black \ 0 ;} }   / * Opera * / 
+12 is      @media Screen and (-webkit-min-Device-Pixel-ratio: 0) { #test {background-Color : Gray ;} }        / * Chrome and safari* /
+Copy the code
+ 
+
+　　6. Please use Css to write a simple slide effect page
+
+　　Answer: that is to use css3. Use animation animation to achieve a simple slideshow effect.
+
+Copy the code
+. 1          / * * * the HTML * / 
+2          div.ani
+ . 3  
+. 4          / * * * CSS * / 
+. 5          .ani {
+ . 6            width : 480px ;
+ . 7            height : 320px ;
+ . 8            margin : 50px Auto ;
+ . 9            overflow : hidden ;
+ 10            Box-Shadow : 0 0 5px rgba (0,0,0,1) ;
+ 11            background-size : cover ;
+ 12           position-background : Center ;
+ 13 is            -webkit-Animation-name : "Loops" ;
+ 14            -webkit-Animation-DURATION : 20S ;
+ 15            -webkit-Animation-Iteration-COUNT : Infinite ;
+ 16          }
+ . 17          @ -webkit-keyframes "Loops " {
+ 18              0% {
+ 19                  background : url (http://d.hiphotos.baidu.com/image/w%3D400/sign=c01e6adca964034f0fcdc3069fc27980/e824b899a9014c08e5e38ca4087b02087af4f4d3.jpg) no-repeat ;             
+ 20             }
+ 21              25% {
+ 22                  background : url (http://b.hiphotos.baidu.com/image/w%3D400/sign=edee1572e9f81a4c2632edc9e72b6029/30adcbef76094b364d72bceba1cc7cd98c109dd0.jpg) no-repeat ;
+ 23              }
+ 24              50% {
+ 25                  background : url (no-repeat ;
+ 26              }
+ 27              75% {
+ 28                  background :no-repeat ;
+ 29              }
+ 30              100% {
+ 31                  background : url (http://c.hiphotos/w%3D400/sign=7d37500b8544ebf86d71653fe9f9d736/0df431adcbef76095d61f0972cdda3cc7cd99e4b.jpg) .baidu.com / image / w% 3D400 / sign = cfb239ceb0fb43161a1f7b7a10a54642 / 3b87e950352ac65ce2e73f76f9f2b21192138ad1.jpg) no-repeat ;
+ 32              }
+ 33          }
+Copy the code
+ 
+
+　　What are the specific differences between in-line and block-level elements? Padding and margin elements can be set up?
+
+　　Block-level block characteristics:
+
+Always exclusive line, manifested as starting from the other line, and subsequent elements must be displayed on the other line;
+Width, height, padding, and margin can all be controlled;
+　　Inline features:
+And adjacent inline elements in the same line;
+Width (width), height (height), the padded top / bottom (padding-top padding -bottom /) and padding the top / bottom (margin-top / margin-bottom) can not be changed ( i.e. padding and margin of the left and right can be set ), that is, the size of the text or picture.
+　　Then the problem comes, the browser also default inline-block elements ( with internal dimensions, height and width can be set, but not automatically wrap ), what ?
+
+　　Answer: <input>, <img>, <button>, <textarea>, <label>.
+
+ 
+
+　　8. What is the margin overlap? What is the result of the overlap?
+
+　　Answer:
+
+　　The margin overlap is margin-collapse.
+
+　　In CSS, the outer margins of two adjacent boxes (which may or may not be ancestry) can be combined into a single margins. This way of merging the margins is called folding, and the combined margins are therefore called folding margins.
+
+　　The folding result follows the following calculation rules:
+
+When two adjacent margins are both positive, the result of the folding is the larger of the two .
+When both adjacent margins are negative, the result of the folding is the larger of the two absolute values .
+When the two outer margins are positive and negative, the result of the folding is the sum of the two .
+　　
+
+　　9.rgba () And transparent opacity What is the difference?
+
+　　Answer:
+
+　　Both rgba () and opacity can achieve transparency, but the big difference is that opacity works on the element and the transparency of everything inside the element,
+
+　　Rgba () only affects the color of the element or its background color. ( Set the child element of rgba's transparent element will not inherit the transparent effect! )
+
+ 
+
+　　10.css in the text can be vertical and horizontal overlap of the two attributes?
+
+　　Answer:
+
+　　Vertical direction: line-height
+
+　　Horizontal direction: letter-spacing
+
+ 
+
+　　So the question is, what's the magic about letter-spacing?
+
+　　Answer: Can be used to eliminate line breaks between inline-block elements.
+
+ 
+
+　　How to vertically center a floating element?
+
+Copy the code
+1  // Method a: Aspect known elements
+ 2  
+. 3  # DIV1 {
+ . 4      background-Color : # 6699FF ;
+ . 5      width : 200px ;
+ . 6      height : 200px ;
+ . 7  
+. 8      position : Absolute ;         // relatively positioned parent element
+ . 9      Top : 50% ;
+ 10      left : 50% ;
+ 11      margin-top : -100px ;    // one-half height, width
+ 12      margin-left :-100px ;
+ 13 is      }
+ 14  
+15  // Method two:
+ 16  
+. 17    # DIV1 {
+ 18 is      width : 200px ;
+ . 19      height : 200px ;
+ 20 is      background-Color : # 6699FF ;
+ 21 is  
+22 is      margin : Auto ;
+ 23 is      position : Absolute ;         // parent element Need relative positioning
+ 24      left : 0 ;
+ 25      top : 0 ;
+ 26     right : 0 ;
+ 27      bottom : 0 ;
+ 28      }
+Copy the code
+ 　　So the question is, how to center an <img> vertically? (In a more convenient way. )
+
+Copy the code
+ The container of 1 #container // <img> is set to
+ 2 {
+ 3      display : table-cell ;
+ 4      text-align : center ;
+ 5      vertical-align : middle ;
+ 6 }
+Copy the code
+ 
+
+　　The difference between 12.px and em.
+
+　　px and em are the length of the unit, the difference is that the value of px is fixed, the number of how much is specified, the calculation is relatively easy. The em value is not fixed, and em inherits the parent element's font size.
+
+　　The browser default font height is 16px. So unmodified browsers are: 1em = 16px. Then 12px = 0.75em, 10px = 0.625em.
+
+ 
+
+　　13. Describe a "reset" CSS file and how to use it. normalize.cssDo you know ? Do you understand the difference between them?　
+
+　　There are many reset styles, and a front-end developer must have a common reset CSS file and know how to use them. Are they blindly doing or knowing why? The reason is that different browsers have different default styles for some elements. If you do not deal with them, there are risks that are necessary in different browsers or even more dramatic sex.
+
+　　You may use Normalize instead of your reset style file. It does not reset all style styles, but only provides a reasonable set of default style values. Not only does it make many browsers consistent and reasonable, but it does not disrupt other things (such as bold headings).
+
+　　In this respect, it is not possible to reset every reset. It also does have some more than one reset, it handles the quirks you never have to consider, audioelements like HTML inconsistent or line-heightinconsistent.
+
+ 
+
+　　14. What is Sass, LESS? Why do you use them?
+
+　　They are CSS preprocessors. He is an abstraction layer on CSS. They are a special syntax / language compilation into CSS.
+
+　　For example, Less is a dynamic style language that assigns CSS to the features of dynamic languages ​​such as variables, inheritance, operations, functions, etc. LESS runs both on the client side (IE 6+, Webkit, Firefox) Server running (with Node.js).
+
+　　Why use them?
+
+Structure is clear, easy to expand.
+Can easily shield the browser private syntax differences. Needless to say, encapsulation repeats the difference in syntax of the browser, reducing meaningless mechanical labor.
+Can easily achieve multiple inheritance.
+Fully compatible with the CSS code can be easily applied to the old project. LESS is just an extension of CSS syntax, so old CSS code can also be compiled with LESS code.
+　　
+
+　　What is the difference between 15.display: none and visibility: hidden?
+
+display  :  Hides the corresponding element but does not occupy the element's original space.
+visibility :  Hides the corresponding element and squeezes the element's original space.
+ 　　That is, using the CSS display: none property, various attribute values ​​such as the width and height of the HTML element (object) are "lost," whereas using the visibility: hidden attribute, the HTML element (object) is only visually Missing (completely transparent), and the space it occupies still exists.
+
+　　
+
+　　16. css have a content attribute to know it? what's the effect? What is the application?
+
+　　Answer:
+
+　　I know. The content attribute of css is used exclusively on the before / after pseudo-elements to insert generated content.
+
+　　The most common application is to use fake classes to clear the float.
+
+Copy the code
+1  // a common floating cleared using a pseudo code class
+ 2  .clearfix: After {
+ . 3      content : "." ;        // here to use content property
+ . 4      the display : Block ; 
+ . 5      height : 0 ;
+ . 6      visibility : hidden ; 
+ . 7      Clear : both ;}
+ 8  
+9  .clearfix { 
+ 10      * zoom : 1 ; 
+ 11 }
+Copy the code
+　　after pseudo-element content through the content generated after the element of a block-level elements, and then use clear: both clear floating.
