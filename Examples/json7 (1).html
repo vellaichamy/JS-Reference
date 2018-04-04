@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<title>JSON</title>
+<script>
+var app=angular.module("Myapp", []);
+
+var ctrlfun = function($scope,$http)
+{
+$scope.myVar = true;
+$scope.myVar1 = true;
+$scope.myVar2 = true;
+$scope.myVar3 = true;
+
+//var url1= "sample1.json";
+var url1="https://api.myjson.com/bins/110bpn"
+
+$http.get(url1).then(function(response){
+$scope.friends = response.data.data;});
+
+	$scope.toggleDisplay = function(){
+	$scope.myVar = !($scope.myVar);
+	}
+	
+	$scope.toggleDisplay1 = function(){$scope.myVar1 = !($scope.myVar1);}
+	$scope.toggleDisplay2 = function(){$scope.myVar2 = !($scope.myVar2);}
+	$scope.toggleDisplay3 = function(){$scope.myVar3 = !($scope.myVar3);}
+
+}
+app.controller('message1', ctrlfun);
+
+</script>
+<body ng-app="Myapp">
+<h4> Fetching json data </h4>
+<div ng-controller='message1'>
+<table border="1">
+<tr>
+<th>Icon</th><th>Type</th><th>Name</th><th>Path</th><th>Children</th>
+</tr>
+
+<tr ng-repeat="f in friends">
+
+<td ng-if = (f.type=="folder")>
+<div ng-if = myVar>
+	<button style="font-size:12px" ng-click="toggleDisplay()">open <i class="material-icons">folder</i></button>
+	</div>
+	<div ng-if = !myVar>
+ <button  style="font-size:12px" ng-click="toggleDisplay()">Close <i class="material-icons">folder_open</i></button>
+ 	</div>
+</td>
+<td ng-if = (f.type=="file")>
+<i class="fa fa-file-o"></i></td>
+
+<td>{{f.type}}</td><td>{{f.name}}</td><td>{{f.path}}</td>
+<td ng-if = (f.type=="folder")>
+<div ng-if = !myVar>
+                        <table border="1">
+                            <tr>
+                                <th>Icon</th> <th>Type</th>	<th>Name</th> <th>Path</th> <th>Children</th>
+                            </tr>
+                            <tr ng-repeat="o in f.children">
+							
+							<td ng-if = (o.type=="folder")>
+							<div ng-if = myVar1>
+							<button style="font-size:12px" ng-click="toggleDisplay1()">open <i class="material-icons">folder</i></button>
+							</div>
+							<div ng-if = !myVar1>
+							<button  style="font-size:12px" ng-click="toggleDisplay1()">Close <i class="material-icons">folder_open</i></button>
+							</div> </td>
+							
+							<td ng-if = (o.type=="file")>
+								<i class="fa fa-file-o"></i></td>
+							    <td>{{o.type}}</td>	<td>{{o.name}}</td> <td>{{o.path}}</td>
+								 <td ng-if = (o.type=="folder")>
+									<div ng-if = !myVar1>
+								       <table border="1">
+										<tr>
+										<th>Icon</th>	<th>Type</th><th>Name</th><th>Path</th>	<th>Children</th>
+										</tr>
+										<tr ng-repeat="j in o.children">
+							
+										<td ng-if = (j.type=="folder")>
+										<div ng-if = myVar2>
+										<button style="font-size:12px" ng-click="toggleDisplay2()">open <i class="material-icons">folder</i></button>
+										</div>
+										<div ng-if = !myVar2>
+										<button  style="font-size:12px" ng-click="toggleDisplay2()">Close <i class="material-icons">folder_open</i></button>
+										</div> </td>
+							
+										<td ng-if = (j.type=="file")>
+										<i class="fa fa-file-o"></i></td>
+										<td>{{j.type}}</td> <td>{{j.name}}</td>	<td>{{j.path}}</td>
+										<td ng-if = (j.type=="folder")>
+											<div ng-if = !myVar2>
+												<table border="1">
+												<tr>
+												<th>Icon</th>	<th>Type</th><th>Name</th>	<th>Path</th> <th>Children</th>
+												</tr>
+												<tr ng-repeat="k in j.children">
+												<td ng-if = (k.type=="folder")>
+												<div ng-if = myVar3>
+												<button style="font-size:12px" ng-click="toggleDisplay3()">open <i class="material-icons">folder</i></button>
+												</div>
+												<div ng-if = !myVar3>
+												<button  style="font-size:12px" ng-click="toggleDisplay3()">Close <i class="material-icons">folder_open</i></button>
+												</div> </td>
+												<td ng-if = (k.type=="file")>
+												<i class="fa fa-file-o"></i></td>
+												<td>{{k.type}}</td>	<td>{{k.name}}</td>	<td>{{k.path}}</td>
+												</tr>
+												</table>
+												</div>
+										
+										</tr>
+										</table>
+										</div>
+										</td>
+											
+							</tr>
+                        </table>
+</div>					
+</td>
+</tr>
+</div>
+</body>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+var app = angular.module('app1', []);
+
+var ctrfun = function($scope)
+   {
+	
+	$scope.str1="Welcome";  
+	$scope.funCalculate = function()
+	{
+		//var str = $scope.str1.toLowerCase(); //for case insignificant count
+		var str = $scope.str1; //for case significant count
+		
+		var letters = {};
+		length = str.length;
+		for(i=0;i<length;i++)
+		{
+			l = str.charAt(i);
+			letters[l]=(isNaN(letters[l])? 1 :letters[l]+1);
+			
+		}
+		//output the counted
+		$scope.str2 = "";
+		for(key in letters)
+		{
+			$scope.str2 +=(key+":"+letters[key]+" ");
+		}
+	}
+	$scope.funChkBinary = function()
+	{
+		var isBinary = true;
+		var num = $scope.str1;
+		if(isNaN(num))
+		{
+			console.log("Please enter numbers only");
+			return;
+		}
+			
+		while(num > 1)
+		{
+			if(num%10 > 1) 
+			{ 
+				$scope.str2="Entered number is not a Binary number";
+				return;
+			}	
+			num = Math.floor(num/10);
+		}
+		$scope.str2="Entered number is a Binary number";
+	}
+   }
+app.controller("Ctrl1", ctrfun); 
+</script>
+</head>
+<body ng-app="app1" ng-controller="Ctrl1">
+<h2> Enter the text to be counted for chars</h2>
+<input type="text" ng-model="str1">
+<button ng-click="funCalculate()">Calculate the occurance</button>
+<button ng-click="funChkBinary()">Check Binay</button>
+<br>
+Result: <p ng-bind="str2"></p>
+</div>
+</body>
+</html>

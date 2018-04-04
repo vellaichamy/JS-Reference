@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var total =0;
+function btnClk(val){
+var btnid="btn"+val;
+var elt = document.getElementById(btnid);
+var elt1 = document.getElementById("txt1");	
+
+	if(elt.style.color == "red")
+	{
+		elt.style.color = "";
+		total -=val;
+	}
+	else
+	{
+		elt.style.color ="red";
+		total +=val;
+	}
+	
+    //console.log("Current value is:"+total);
+	elt1.value = total;
+}
+</script>
+</head>
+<body>
+<button onclick="btnClk(1)" id="btn1">Box1</button>
+<button onclick="btnClk(2)" id="btn2">Box2</button>
+<button onclick="btnClk(3)" id="btn3">Box3</button>
+<br>Result is:<input type="text" id="txt1">
+</body>
+</html>

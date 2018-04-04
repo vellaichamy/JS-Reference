@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+var app = angular.module('app1', []);
+
+
+
+var ctrfun = function($scope)
+   {
+	
+	$scope.msg="Welcome";  //tooltip text
+	$scope.chkVal=false;
+	$scope.callFun = function()
+	{
+		
+		var b1 = document.getElementById("but1");
+		b1.innerHTML = ($scope.chkVal)?"Enabled":"Disabled";	
+		$scope.msg= ($scope.chkVal)?"":"Welcome"; //Assign value only if it is disabled
+			
+	}
+
+   }
+app.controller("Ctrl1", ctrfun); 
+</script>
+</head>
+<body ng-app="app1" ng-controller="Ctrl1">
+<h2> If the check box is checked then button will be enabled. Only when the button is disabled, the tooltip text will be shown</h2>
+<input type="checkbox" ng-model="chkVal" ng-change="callFun()">Enable/Disable button<br>
+<button ng-disabled="!chkVal" title="{{msg}}" id="but1">Disabled</button>
+
+</div>
+</body>
+</html>

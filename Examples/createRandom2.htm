@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<style>
+.fa-close {
+  cursor: pointer;
+}
+</style>
+<script>
+var app= angular.module("myApp", []);
+app.factory('GenerateUniqueId', function() {
+  var generateUid = function() {
+   var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (d + Math.random()*16)%16 | 0;
+      d = Math.floor(d/16);
+      return (c === 'x' ? r : (r&0x7|0x8)).toString(16);
+    });
+    return uuid;
+  };
+  return {
+    next: function() { return generateUid(); }
+  };
+})
+
+app.controller('myCtrl', function($scope,GenerateUniqueId){
+
+$scope.uid = 0;
+$scope.idlist=[];
+$scope.createNew = function()
+{
+	$scope.uid = GenerateUniqueId.next();
+	$scope.idlist.push($scope.uid);
+	
+}
+
+$scope.deleteOne = function (id) 
+	{
+        	$scope.idlist.splice(id, 1);
+        }
+
+});
+
+</script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+Unique id:<input ng-model="uid" size="40"/>
+<button ng-click="createNew()">Create Newid</button>
+<br>
+<ul>
+<li ng-repeat="id in idlist">{{id}}
+<span class="fa-close" ng-click="deleteOne($index)"> x</span></li>
+</ul>
+</body>
+</html>

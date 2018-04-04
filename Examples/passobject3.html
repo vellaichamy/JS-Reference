@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <script>
+var myApp = angular.module('myApp',[]);
+
+var ctrlfun = function($scope,$http)
+{
+$scope.isFolderOpen = false;
+$scope.isSecondFolderOpen = false;
+
+
+var url1="https://api.myjson.com/bins/db2w3";
+
+$http.get(url1).then(function(response)
+		{
+		$scope.friends = response.data.data;
+		});
+}
+
+myApp.directive('passObject', function($interpolate) {
+    return {
+        restrict: 'EA',
+        scope: { obj: '=' },  //<td ng-if = (f.type=="folder")>
+		template: `<div ng-if = "obj.type =='folder'")>
+						<div ng-if = !isFolderOpen>
+						  <button type="button" class="btn btn-default btn-sm" ng-click="openChildren()">
+						  <span class="glyphicon glyphicon-folder-close"></span> Open </button>
+						</div>
+						<div ng-if = isFolderOpen>
+						   <button type="button" class="btn btn-default btn-sm" ng-click="openChildren()">
+							<p><span class="glyphicon glyphicon-folder-open"></span> Close </button></p>
+											
+						</div>
+					</div>
+					<div ng-if = "obj.type =='file'")>
+					<p><span class="glyphicon glyphicon-file"></span></p>
+					</div> 
+					{{obj.name}} Path:{{obj.path}}
+					<div ng-if = isFolderOpen> {{obj.children}}<div>`,
+		controller: function($scope,$element,$attrs)
+				{
+								
+					$scope.isFolderOpen = false;
+					$scope.openChildren = function()
+					{
+						$scope.isFolderOpen = !($scope.isFolderOpen);
+						//console.log("Before copy:" + obj.name);
+						//$scope.obj = angular.copy($scope.obj.children);		
+						//console.log("After copy:" + obj.name);
+							
+					}
+					$scope.closeChildren = function()
+					{
+						$scope.isSecondFolderOpen = !($scope.isSecondFolderOpen);
+					}
+				}
+			};
+});	
+
+myApp.controller('MyCtrl', ctrlfun);
+
+</script>
+<body ng-app="myApp">
+<div ng-controller="MyCtrl">
+	<div ng-repeat="f in friends">
+	<pass-object obj=f> </pass-object>
+	<hr>
+	
+	<div ng-if = "f.children != null")>
+		<div ng-if = !isFolderOpen>
+			<div ng-repeat ="g in f.children">
+				<pass-object obj=g> </pass-object>
+				<hr>	
+					<div ng-if = "g.children != null")>
+					<div ng-if = !isSecondFolderOpen>
+						<div ng-repeat = "h in g.children">
+						<pass-object obj=h> </pass-object>
+						<hr>
+							<div ng-if = "h.children != null")>
+								<div ng-repeat = "i in h.children">
+								<pass-object obj=i> </pass-object>		
+					
+								</div>
+							</div>
+						</div>
+					</div>	
+					</div>						
+			</div>
+		</div>	
+	</div>
+</div>	
+</div>
+</body>
+</html>

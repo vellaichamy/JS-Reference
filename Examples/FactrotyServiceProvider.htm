@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+
+var app= angular.module("myApp",[]);
+
+
+var serviceFun = function(){
+this.msg = "This is from Service";
+}
+
+var factoryserviceFun = function(){
+var test = {};
+test.msg = "This is from Factory Service";
+return test;
+}
+
+var providerserviceFun = function(){
+var test = "This is from Provider Service";
+return{
+	setName: function(name)
+		{
+			test += "  "+name;
+		},
+	$get: function()
+		{
+		return{
+			msg : test
+			}
+		}
+
+	}
+
+}
+
+app.config(function(fromProviderServiceProvider) {
+
+	fromProviderServiceProvider.setName("test");
+});
+
+app.service('fromService', serviceFun);
+app.factory('fromFactoryService', factoryserviceFun);
+app.provider('fromProviderService', providerserviceFun);
+
+var ctrlfun = function($scope,fromService,fromFactoryService,fromProviderService)
+{
+	$scope.message = fromService.msg +" "+ fromFactoryService.msg +" "+ fromProviderService.msg;
+}
+app.controller('myCtr1', ctrlfun);
+
+
+</script>
+</head>
+<body ng-app="myApp" ng-controller="myCtr1">
+{{message}}
+</body>
+</html>

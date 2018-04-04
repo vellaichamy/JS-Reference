@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <script>
+var myApp = angular.module('myApp',[]);
+
+var ctrlfun = function($scope,$http)
+{
+
+$scope.isFolderOpen = false;
+
+var url1="https://api.myjson.com/bins/db2w3";
+
+$http.get(url1).then(function(response)
+		{
+		$scope.friends = response.data.data;
+		});
+}
+
+myApp.directive('passObject', function() {
+    return {
+        restrict: 'EA',
+        scope: { obj: '=' },
+		template: `<span ng-if = (obj.type =="folder") >
+						<div ng-if != isFolderOpen>
+							<button style="font-size:12px">open <i class="material-icons">folder</i></button>
+						</div>
+						<div ng-if == isFolderOpen>
+							<button  style="font-size:12px">Close <i class="material-icons">folder_open</i></button>
+						</div>
+					</span>
+					<span ng-if = (f.type =="file") >
+						<i class="fa fa-file-o"></i></td>
+					</span>
+					{{obj.type}}<br> Name:{{obj.name}} <br>	Path: {{obj.path}}`
+		};
+});	
+
+myApp.controller('MyCtrl', ctrlfun);
+
+</script>
+<body ng-app="myApp">
+<div ng-controller="MyCtrl">
+	<div ng-repeat="f in friends">
+		
+    <pass-object obj=f> </pass-object>
+	<hr>
+			<div ng-repeat ="g in f.children">
+				<pass-object obj=g> </pass-object>
+				<hr>	
+					<div ng-repeat = "h in g.children">
+					<pass-object obj=h> </pass-object>
+					<hr>
+						<div ng-repeat = "i in h.children">
+						<pass-object obj=i> </pass-object>		
+					
+						</div>
+					</div>	
+			</div>
+	</div>	
+</div>
+</body>
+</html>

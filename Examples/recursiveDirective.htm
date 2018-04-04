@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Recursive directive </title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+var app = angular.module('plunker', []);
+ var Ctrlfun = function($scope)
+{
+  $scope.myVar = true;
+  $scope.myVar1 = true;
+   $scope.parents =
+[
+
+  {    name: 'George', path: 'Parents', type: 'folder', children: [{
+
+       name: 'Jack',  path: 'Parents/Children',   type:'folder', children:[
+
+                {name: 'second',  path: 'Parents/Children/children',   type:'file'},
+                {name: 'third',  path: 'Parents/Children/children',   type:'folder',children:[
+                {name: 'fourth',  path: 'Parents/Children/children/children',   type:'file'},
+                {name: 'fifth',  path: 'Parents/Children/children/children',   type:'file'}]
+}] 
+   },{       name: 'Amy',  path: 'Parents/Children',   type:'file' }]
+  },  {      name: 'Jimmy',  path: 'Parents',type: 'folder',      children: [{
+        name: 'Max',             path: 'Parents/Children',    type:'file'    
+    },    {        name: 'Lily',    path: "Parents/Children",        type:"file"
+    },    {        name: 'Kim',      path: 'Parents/Children',      type:'file'  
+    }]    },     { name: 'Rama',  path: 'Parents',type:'file'  
+    },    {        name: 'Seetha', path: 'Parents', type:'file'  }
+];
+
+  /*            
+  $scope.openFolder = function()
+
+                {
+                                $scope.myVar1= !$scope.myVar1;  //toggle between folder open and close
+                                $scope.myVar= !$scope.myVar;  // To show children
+                } 
+				*/
+}
+
+var dirfun = function()
+{
+                return {
+                                 scope: { parent : '=' },
+                                 template:`<div ng-if="parent.type == 'file'">
+                                                  <span class="glyphicon glyphicon-file"></span>
+                                                   </div>
+                                                      <div ng-if="parent.type == 'folder'">
+                                                                <div ng-if= !myVar1>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="openFolder()">
+                               <span class="glyphicon glyphicon-folder-close"></span> Open</button> </div>
+                                                 <div ng-if= myVar1>
+                                 <button type="button" class="btn btn-default btn-sm"  ng-click="openFolder()">
+                               <span class="glyphicon glyphicon-folder-open"></span> Close</button> </div>
+                                               </div>
+                                                 {{parent.name}} Path: {{parent.path}}<br>
+                               <div ng-if=myVar>
+                                                Children:
+                                               <div ng-repeat="child in parent.children">
+                                                <div my-directive parent= child> </div>
+                                </div> <hr>`,
+                                link: function(scope, elem, attrs)
+                                {                                       
+                                             scope.openFolder = function()
+                                                {
+                                                scope.myVar1= !scope.myVar1;  //toggle between folder open and close
+                                                scope.myVar= !scope.myVar;  // To show children
+                                                 }
+                                }
+             }
+}
+
+app.controller('MainCtrl', Ctrlfun);
+app.directive('myDirective', dirfun);
+
+</script>
+</head>
+
+  <body ng-app="plunker" ng-controller="MainCtrl">
+   <div ng-repeat="parent in parents ">
+                <div my-directive parent= parent> </div>
+   </div>
+  </body>
+</html>

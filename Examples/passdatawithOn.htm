@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html><head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+
+var Ctrlfunction = function($scope,$rootScope)
+{
+$scope.a = 10;
+$scope.b = 20;
+
+$scope.doCalc1Emit1 = function()
+ {
+  $scope.$emit("MyCalc1Emit1");
+ }
+ 
+ $scope.doCalc1Broadcast1 = function()
+ {
+  $scope.$broadcast("MyCalc1Broadcast1Event");
+ }
+ 
+ $scope.doCalc1RootBroadcast1 = function()
+ {
+  $scope.$broadcast("MyCalc1RootBroadcast1Event");
+ }
+ 
+ $scope.$on("MyCalc1Emit1", function(e,data){
+ console.log("Parent MyCalc1Emit1 -raised by Emit");
+ });
+ 
+ $rootScope.$on("MyCalc1Emit1", function(e,data){
+ console.log("Root - Parent MyCalc1Emit1 -raised by Emit");
+ });
+ 
+  $scope.$on("MyCalc1Broadcast1Event", function(e,data){
+ console.log("Parent MyCalc1Broadcast1Event -raised by Broadcast");
+ });
+ 
+ $rootScope.$on("MyCalc1RootBroadcast1Event", function(e,data){
+ console.log("Root Parent Controller MyCalc1RootBroadcast1Event-raised by Root Broadcast");
+ });
+ 
+ $scope.$on("MyCalc1RootBroadcast1Event", function(e,data){
+ console.log("Parent Controller MyCalc1RootBroadcast1Event -raised by Root Broadcast");
+ });
+ 
+ $scope.$on("MyChild1Emit", function(e,data){
+// console.log("Child Controller Emit -raised by Emit");
+$scope.a = data.a;
+$scope.b = data.b;
+ });
+ 
+ $rootScope.$on("MyChild1Emit", function(e,data){
+ console.log("Root -Child Controller Emit -raised by Emit");
+ });
+ 
+}
+
+var Ctr3function = function($scope,$rootScope)
+{
+$scope.c = 30;
+$scope.d = 40;
+
+ $scope.$on("MyCalc1Emit1", function(e,data){
+ console.log("Sibling Controller1 MyCalc1Emit1 -raised by Emit");
+ });
+ 
+ $rootScope.$on("MyCalc1Emit1", function(e,data){
+ console.log("Root - Sibling Controller1 MyCalc1Emit1 -raised by Emit");
+ });
+ 
+ $scope.$on("MyCalc1Broadcast1Event", function(e,data){
+ console.log("Sibling Controller MyCalc1Broadcast1Event -raised by Broadcast");
+ });
+ 
+ $rootScope.$on("MyCalc1RootBroadcast1Event", function(e,data){
+ console.log("Root Sibling Controller MyCalc1RootBroadcast1Event-raised by Root Broadcast");
+ });
+ 
+ $scope.$on("MyCalc1RootBroadcast1Event", function(e,data){
+ console.log("Sibling Controller MyCalc1RootBroadcast1Event -raised by Root Broadcast");
+ });
+ 
+ $scope.$on("MyChild1Emit", function(e,data){
+ console.log("Sibling - Child Controller Emit -raised by Emit");
+ });
+ 
+ $rootScope.$on("MyChild1Emit", function(e,data){
+ console.log("Root -Sibling -Child Controller Emit -raised by Emit");
+ });
+
+}
+
+var Ctr2function = function($scope,$rootScope)
+{
+ $scope.$on("MyCalc1Emit1", function(e,data){
+ console.log("Child Controller1 MyCalc1Emit1 -raised by Emit");
+ });
+ 
+ $rootScope.$on("MyCalc1Emit1", function(e,data){
+ console.log("Root - Child Controller1 MyCalc1Emit1 -raised by Emit");
+ });
+ 
+  $scope.$on("MyCalc1Broadcast1Event", function(e,data){
+ console.log("Child Controller MyCalc1Broadcast1Event -raised by Broadcast");
+ });
+ 
+  $rootScope.$on("MyCalc1RootBroadcast1Event", function(e,data){
+ console.log("Root Child Controller MyCalc1RootBroadcast1Event-raised by Root Broadcast");
+ });
+ 
+ $scope.$on("MyCalc1RootBroadcast1Event", function(e,data){
+ console.log("Child Controller MyCalc1RootBroadcast1Event -raised by Root Broadcast");
+ });
+ 
+ $scope.doChild1Emit = function()
+ {
+  $scope.$emit("MyChild1Emit",{a:100,b:200});
+ }
+ 
+ $scope.$on("MyChild1Emit", function(e,data){
+ //console.log("Child Controller Emit -raised by Emit");
+ data.a
+ });
+ 
+ $rootScope.$on("MyChild1Emit", function(e,data){
+ console.log("Root -Child Controller Emit -raised by Emit");
+ });
+}
+
+app.controller("DataController1", Ctrlfunction);
+app.controller("DataController3", Ctr3function);
+app.controller("DataController2", Ctr2function);
+
+app.run(['$rootScope', function($rootScope)
+{
+ 
+ $rootScope.$on("MyCalc1Emit1", function(e,data){
+ console.log("Root - Module MyCalc1Emit1 -raised by Emit");
+ });
+ 
+ $rootScope.$on("MyCalc1RootBroadcast1Event", function(e,data){
+ console.log("Root -Module MyCalc1RootBroadcast1Event-raised by Root Broadcast");
+ });
+ 
+ $rootScope.$on("MyChild1Emit", function(e,data){
+ console.log("Root -Module -Child Controller Emit -raised by Emit");
+ });
+}]);
+
+
+</script>
+</head>
+<body ng-app="myApp">
+		<div ng-controller="DataController1">
+            <h2>In Parent Controller </h2>
+             a = {{a}} <br>
+			 b = {{b}} <br>
+			 sum = {{ a+b}}
+			 <button ng-click="doCalc1Emit1()">Calc1Emit1</button>
+		 <button ng-click="doCalc1Broadcast1()">Calc1Broadcast1</button>
+		 <button ng-click="doCalc1RootBroadcast1()">Calc1RootBroadcast1</button>
+        <hr/>
+        <div ng-controller="DataController2">
+            <h2>In Child Controller</h2>
+			<button ng-click="doChild1Emit()">Child Emit</button>
+			 </div><hr/>
+		</div>
+        <div ng-controller="DataController3">
+            <h2>In Sibling Controller</h2>
+			 c = {{c}}<br>
+			 d = {{d}}<br>
+			 sum = {{c+d}}
+        </div>
+</body>
+</html>

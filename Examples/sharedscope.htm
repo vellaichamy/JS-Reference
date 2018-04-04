@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<title>Shared scope</title>
+<script>
+var app=angular.module("Myapp", []);
+
+var ctrlfun = function($scope){
+$scope.a = 10;
+$scope.b = 20;
+
+$scope.changeValueB = function()
+	{
+	$scope.b = 30;
+	}
+}
+
+var dirfun1 = function()
+{
+return {
+	scope: true,  //if this line is not there it will be shared scope
+	template: `<div> a={{a}}, b ={{b}} </div>
+		Modify a:<input type="text" ng-model="a"/>
+		<button ng-click="changeValueB()">Change B Value</button>`,
+	controller: function($scope,$element,$attrs)
+		{
+		$scope.changeValueB = function()
+			{
+				$scope.b = 40;
+			}
+		}
+       }
+} 
+
+var dirfun2 = function()
+{
+return {
+	scope: true,  //if this line is not there it will be shared scope
+	template: `<div> a={{a}}, b ={{b}} </div>
+		Modify a:<input type="text" ng-model="a"/>
+		<button ng-click="changeValueB()">Change B Value</button>`,
+	controller: function($scope,$element,$attrs)
+		{
+		$scope.changeValueB = function()
+			{
+				$scope.b = 50;
+			}
+		}
+       }
+} 
+
+app.controller('MyCtrl', ctrlfun);
+app.directive("message",dirfun1);
+app.directive("message2",dirfun2);
+  
+
+</script>
+<body ng-app="Myapp">
+<div ng-controller="MyCtrl">
+Parent Controller: a={{a}},b={{b}} <br>
+Modify a:<input type="text" ng-model="a"/><br>
+<button ng-click="changeValueB()">Change B Value</button>
+<hr>
+From directive 1: <div message> </div> <br>
+From directive 2: <div message> </div> <br>
+From directive 3: <div message2> </div> <br>
+</div>
+</body>

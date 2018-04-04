@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <script>
+var myApp = angular.module('myApp',[]);
+
+var ctrlfun = function($scope,$http)
+{
+$scope.isLevelOneOpen = false;
+$scope.isLevelTwoOpen = false;
+$scope.isLevelThreeOpen = false;
+$scope.isLevelFourOpen = false;
+
+//var url1="https://api.myjson.com/bins/db2w3";
+var url1="https://api.myjson.com/bins/110bpn"   //old sample json
+
+	$http.get(url1).then(function(response)
+		{
+		$scope.friends = response.data.data;
+		});
+		
+		$scope.openLevelOneChildren = function() {	$scope.isLevelOneOpen = !($scope.isLevelOneOpen);}
+		$scope.openLevelTwoChildren = function() {	$scope.isLevelTwoOpen = !($scope.isLevelTwoOpen);}
+		$scope.openLevelThreeChildren = function(){	$scope.isLevelThreeOpen = !($scope.isLevelThreeOpen);}
+		$scope.openLevelFourChildren = function(){	$scope.isLevelFourOpen = !($scope.isLevelFourOpen);}
+			
+}
+
+myApp.directive('passObject', function() {
+    return {
+        restrict: 'EA',
+        scope: { obj: '=' },  //<td ng-if = (f.type=="folder")>
+		template: `	Name:<input ng-model= "obj.name"> Path:<input ng-model= "obj.path">`,
+		controller: function($scope,$element,$attrs)		{
+				}
+			};
+});	
+
+myApp.controller('MyCtrl', ctrlfun);
+
+</script>
+<body ng-app="myApp">
+<div ng-controller="MyCtrl">
+	<div ng-repeat="f in friends">
+	
+	<div ng-if = "f.type =='folder'")>
+						<div ng-if = !isLevelOneOpen>
+							<button style="font-size:12px" ng-click="openLevelOneChildren()">Open <i class="material-icons">folder</i></button>
+						</div>
+						<div ng-if = isLevelOneOpen>
+							<button  style="font-size:12px" ng-click="openLevelOneChildren()">Close <i class="material-icons">folder_open</i></button>
+						</div>
+	</div>						
+	<div ng-if = "f.type =='file'")>
+	<i class="fa fa-file-o"></i>
+	</div> 	
+	<pass-object obj=f> </pass-object>
+	<hr>
+	
+	<div ng-if = "f.children != null")>
+		<div ng-if = isLevelOneOpen>
+			<div ng-repeat ="g in f.children">
+				<div ng-if = "g.type =='folder'")>
+							<div ng-if = !isLevelTwoOpen>
+								<button style="font-size:12px" ng-click="openLevelTwoChildren()">Open <i class="material-icons">folder</i></button>
+							</div>
+							<div ng-if = isLevelTwoOpen>
+								<button  style="font-size:12px" ng-click="openLevelTwoChildren()">Close <i class="material-icons">folder_open</i></button>
+							</div>
+				</div>						
+			<div ng-if = "g.type =='file'")>
+			<i class="fa fa-file-o"></i>
+			</div> 	
+			<pass-object obj=g> </pass-object>
+			<hr>	
+				<div ng-if = "g.children != null")>
+				<div ng-if = isLevelTwoOpen>
+					<div ng-repeat = "h in g.children">
+						<div ng-if = "h.type =='folder'")>
+							<div ng-if = !IsLevelThreeOpen>
+								<button style="font-size:12px" ng-click="openLevelThreeChildren()">Open <i class="material-icons">folder</i></button>
+							</div>
+							<div ng-if = IsLevelThreeOpen>
+							<button  style="font-size:12px" ng-click="openLevelThreeChildren()">Close <i class="material-icons">folder_open</i></button>
+							</div>
+						</div>	
+						<div ng-if = "h.type =='file'")>
+							<i class="fa fa-file-o"></i>
+						</div> 
+							
+						<pass-object obj=h> </pass-object>
+						<hr>
+							<div ng-if = "h.children != null")>
+							<div ng-if = isLevelThreeOpen>
+								<div ng-repeat = "j in h.children">
+									<div ng-if = "j.type =='folder'")>
+										<div ng-if = !IsLevelFourOpen>
+										<button style="font-size:12px" ng-click="openLevelFourChildren()">Open <i class="material-icons">folder</i></button>
+										</div>
+										<div ng-if = IsLevelFourOpen>
+										<button  style="font-size:12px" ng-click="openLevelFourChildren()">Close <i class="material-icons">folder_open</i></button>
+										</div>
+									</div>	
+									<div ng-if = "j.type =='file'")>
+										<i class="fa fa-file-o"></i>
+									</div> 
+									<pass-object obj=j> </pass-object>		
+					
+								</div>
+							</div>
+							</div>
+					</div>
+				</div>
+				</div>				
+			</div>
+		</div>	
+	</div>
+</div>	
+</div>
+</body>
+</html>

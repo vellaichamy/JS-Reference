@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<title>JSON</title>
+<script>
+var app=angular.module("Myapp", []);
+
+var ctrlfun = function($scope,$http)
+{
+$http.get("https://api.mockaroo.com/api/09035ec0?count=20&key=81567080")
+.then(function(response){
+$scope.friends = response.data;
+});
+
+}
+app.controller('message1', ctrlfun);
+
+</script>
+<body ng-app="Myapp">
+<h4> Fetching json data </h4>
+<div ng-controller='message1'>
+<table border="1">
+<tr>
+<th> ID</th>
+<th> First Name</th>
+<th> Last Name</th>
+<th> Email</th>
+<th> Gender</th>
+<th> IP address</th>
+</tr>
+<tr ng-repeat="f in friends">
+<td>{{f.id}}</td>
+<td>{{f.first_name}}</td>
+<td>{{f.last_name}}</td>
+<td>{{f.email}}</td>
+<td>{{f.gender}}</td>
+<td>{{f.ip_address}}</td>
+</tr>
+</div>
+</body>

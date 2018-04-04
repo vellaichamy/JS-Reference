@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script>
+var app = angular.module("MyApp", []);
+
+app.controller("PostsCtrl", function($scope, $http) {
+
+   
+   var dataUrl ='https://api.mockaroo.com/api/470febd0?count=5&key=81567080'; 
+   
+   $http.get(dataUrl).then(
+		function(response){
+		 	$scope.model.contacts = response.data;
+		 		},
+		function(error){
+		 	console.log(error.data);
+		 	});
+
+ $scope.model = {
+        contacts: {},
+        selected: {}
+    };
+
+ // gets the template to ng-include for a table row / item
+    $scope.getTemplate = function (contact) {
+        if (contact.id === $scope.model.selected.id) return 'edit';
+        else return 'display';
+    };
+
+   $scope.editContact = function (contact) {
+        $scope.model.selected = angular.copy(contact);
+    };
+
+ $scope.saveContact = function (idx) {
+        console.log("Saving contact");
+        $scope.model.contacts[idx] = angular.copy($scope.model.selected);
+        $scope.reset();
+    };
+
+ $scope.removeContact = function (idx) {
+        console.log("Removing contact");
+	$scope.model.contacts.splice(idx,1);
+        
+    };
+
+    $scope.reset = function () {
+        $scope.model.selected = {};
+    };
+
+
+$scope.addNewRow = function()   {
+
+     var l = $scope.model.contacts.length;
+     let max= 0;
+     let current =0;
+     var i=0;	
+	//get maximum id
+        for(i=0;i<l;i++)
+	{ current = parseInt($scope.model.contacts[i]);
+	  if(max < current)
+		max = current;
+	 }
+
+	max++;
+      
+  	console.log("Adding new contact");
+	$scope.model.selected.id = max;
+	$scope.model.selected.first_name = "test";
+	$scope.model.selected.email = "testemail";
+	$scope.model.contacts.push($scope.model.selected);
+ 	$scope.reset(); 
+  };
+
+
+});
+</script>
+</head>
+<body ng-app="MyApp" ng-controller="PostsCtrl">
+<button ng-click="addNewRow()">Add</button>
+<table border="1px solid">
+<thead>
+<tr>
+<th>ID</th>
+<th>First Name</th>
+<th>Email ID</th>
+<th>Action</th>
+<tr>
+</thead>
+<tbody>
+<tr ng-repeat="contact in model.contacts" ng-include="getTemplate(contact)">
+</tr>
+</tbody>
+</table>
+<script type="text/ng-template" id="display">
+	<td>{{contact.id}}</td>
+        <td>{{contact.first_name}}</td>
+        <td>{{contact.email}}</td>
+        <td>
+            <button ng-click="editContact(contact)">Edit</button>
+        </td>
+    </script>
+    <script type="text/ng-template" id="edit">
+	<td><input type="text" readonly ng-model="model.selected.id" /></td>
+        <td><input type="text" ng-model="model.selected.first_name" /></td>
+        <td><input type="text" ng-model="model.selected.email" /></td>
+        <td>
+            <button ng-click="saveContact($index)">Save</button>
+	    <button ng-click="removeContact($index)">Remove</button>
+            <button ng-click="reset()">Cancel</button>
+        </td>
+    </script>
+</body>
+</html>

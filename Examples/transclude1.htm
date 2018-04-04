@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<title>Transclude example</title>
+<script>
+var app=angular.module("Myapp", []);
+
+var ctrlfun = function($scope){}
+
+var dirfun = function()
+{
+return {
+	scope: true,  //if this line is not there it will be shared scope
+	template: `This is a msg from directive <div ng-transclude> </div>`,
+	transclude: true
+		}
+} 
+app.controller('MyCtrl', ctrlfun);
+app.directive("message",dirfun);
+app.directive("message2",dirfun);
+ 
+</script>
+<body ng-app="Myapp">
+<div ng-controller="MyCtrl">
+Parent Controller:<br>
+From directive 1: <div message>Inner message from Directive1 </div> <br>
+From directive 2: <div message2>Inner message from Directive2 </div> <br>
+</div>
+</body>

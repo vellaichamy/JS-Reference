@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+var app=angular.module("myApp",[]);
+var dirFunc = function($interpolate)
+{
+	return{
+		link: function(scope, iElement, attrs, filterCtrl) { iElement.on("click", scope.funTest); } ,
+		controller: function($scope,$element,$attrs)
+				{
+					var v = $interpolate($attrs.text)($scope);  //to get the current value of text
+					var clicked = false;
+					result = 0;
+						//Function to be excuted while clicking the directive element			
+						$scope.funTest = function()
+						{
+							var elem = document.getElementById("four");
+							clicked = !clicked;
+							if(clicked == true)
+							{
+								$element.css("border", "2px solid lightgreen");
+								result = Number(result) + Number(v);
+							
+							}
+							else						
+							{
+								$element.css("border", "2px solid grey");
+								result = Number(result) - Number(v);
+							}
+							//console.log("The result is: " + result);
+							elem.value = result;
+						} 
+				}
+			}
+}	   
+app.directive("box1",dirFunc);
+
+</script>
+<title>Directive usage</title>
+</head>
+<body ng-app="myApp">
+<div style="border: 2px solid grey" box1 text={{i}} ng-repeat="i in [1,2,3,4]"> 
+{{i}}  
+</div>
+<div>
+Value is:<input type="text" id="four" ng-model="result">
+</div>
+</body>
+</html>

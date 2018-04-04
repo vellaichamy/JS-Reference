@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<title>JSON</title>
+<style>
+td{
+max-width: 200px;
+max-height: 50px;
+}
+</style>
+<script>
+var app=angular.module("Myapp", []);
+
+var ctrlfun = function($scope,$http)
+{
+var url1 = "https://api.mockaroo.com/api/0f8abde0?count=20&key=81567080";
+
+$http.get(url1).then(function(response){
+$scope.friends = response.data;
+});
+
+}
+app.controller('message1', ctrlfun);
+
+</script>
+<body ng-app="Myapp">
+<h4> Fetching json data </h4>
+<div ng-controller='message1'>
+<table border="1">
+<tr>
+<th>Icon</th>
+<th> Name</th>
+<th> Size</th>
+</tr>
+<tr ng-repeat="f in friends">
+
+<td ng-if = f.Type>
+<div class="childdiv">
+<img class="autoResizeImage" src="C:\Users\Sankar\Desktop\Angularjs\openFolder.jpg"/></div></td>
+<td ng-if = !f.Type>
+<div class="childdiv">
+<img src="C:\Users\Sankar\Desktop\Angularjs\fileicon.png"/></div></td>
+<td>{{f.Name}}</td>
+<td>{{f.size}}</td>
+</tr>
+</div>
+</body>
