@@ -1,24 +1,80 @@
-Javascript Interview Questions
-
-General interview questions for a front-end JS developer.
-
-Questions
-
 What is the spec Javascript implements and what versions of it are you most current with?
 
 Does JavaScript support the use of classes?
 
+ 
+Technically, the statement "JavaScript has no classes" is correct.
+
+	Although JavaScript is object-oriented language, it isn't a class-based language—it's a prototype-based language.
+	There are differences between these two approaches, but since it is possible to use JavaScript like a class-based language,
+	many people (including myself) often simply refer to the constructor functions as "classes".
+
 What is the prototype of an object?
+	ECMAScript 5, an object can also be created with the function Object.create() .
+	...
+	Creating a JavaScript Object
+	Define and create a single object, using an object literal.
+	Define and create a single object, with the keyword new .
+	Define an object constructor, and then create objects of the constructed type.
 
 What is prototypal inheritance?
+	 prototype object is being used by JavaScript engine in two things, 1) to find properties and methods of an object 2) to implement inheritance in JavaScript.
+
+	function Student() {
+	    this.name = 'John';
+	    this.gender = 'M';
+	}
+
+	Student.prototype.sayHi = function(){
+	    alert("Hi");
+	};
+
+	var studObj = new Student();
+	studObj.toString();
 
 What is the DOM?
 
+	The Document Object Model is a cross-platform and language-independent application programming interface that treats an HTML, XHTML, 
+	or XML document as a tree structure wherein each node is an object representing a part of the document. 
+	The DOM represents a document with a logical tree.
+
 What are the two types of event propagation?
+
+	There are two types of event order: 
+	capturing and bubbling. In capturing, the outer element will receive event and then the inner element. 
+	But the opposite happens in bubbling.
+
+	Whenever an event occurs both capturing and bubbling occurs.
+	During capturing browser travels from parent to child to check if any event is registered under capture.
+	Those matching events are executed and then it bubbles again. During bubbling it checks if any event is registered under bubble. 
+	If it find any then it executes them.
 
 What is the difference between event bubbling and event capturing for DOM events?
 
+	 There are two ways Top to Bottom(Event Capturing) and other one is Bottom to Top (Event Bubbling). But unfortunately,
+	 both of them apply opposite approach. 
+	 Internet Explorer 4 adopts the Event Bubbling approach and Netscape communicator 4 adopts Event Capturing approach.
+
 What is the “this” keyword and what does it reference?
+
+	The JavaScript this keyword refers to the object it belongs to.
+	It has different values depending on where it is used:
+	In a method, this refers to the owner object.
+	Alone, this refers to the global object.
+	In a function, this refers to the global object.
+	In a function, in strict mode, this is undefined.
+	In an event, this refers to the element that received the event.
+	Methods like call(), and apply() can refer this to any object.
+	this in a Method
+	In an object method, this refers to the "owner" of the method.
+
+	In the example on the top of this page, this refers to the person object.
+
+	The person object is the owner of the fullName method.
+
+	fullName : function() {
+	  return this.firstName + " " + this.lastName;
+	}
 
 How does scope in Javascript differ from other languages?
 
